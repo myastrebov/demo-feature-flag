@@ -28,8 +28,13 @@ public class FeatureController {
     private boolean featureEnabled;
 
     @GetMapping("/feature-flag/static/if-else/{name}")
-    public String useFeature(@PathVariable String name) {
+    public String useFeatureStatic(@PathVariable String name) {
         return featureEnabled ? friendlyResource.hello(name) : dummyResource.hello(name);
+    }
+
+    @GetMapping("/feature-flag/dynamic/if-else/{name}")
+    public String useFeatureDynamic(@PathVariable String name) {
+        return ff4j.check("AwesomeFeature") ? friendlyResource.hello(name) : dummyResource.hello(name);
     }
 
     @GetMapping(value = "/", produces = "text/html")
