@@ -6,6 +6,7 @@
     <modules>
         <module>features</module>
         <module>feature-flag-ff4j</module>
+        <module>feature-flag-togglz</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
