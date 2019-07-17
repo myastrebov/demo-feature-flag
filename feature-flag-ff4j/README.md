@@ -8,4 +8,4 @@ mvn spring-boot:run
 ```
 
 ## Using the example
-When running the example you can access it by going to [http://localhost:8080](http://localhost:8880)
+When running the example you can access it by going to [http://localhost:8880](http://localhost:8880)
