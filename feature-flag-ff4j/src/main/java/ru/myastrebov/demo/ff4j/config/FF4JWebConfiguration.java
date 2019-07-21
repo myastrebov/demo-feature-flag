@@ -20,21 +20,8 @@ import org.springframework.context.annotation.Configuration;
 public class FF4JWebConfiguration extends SpringBootServletInitializer {
 
     @Bean
-    public ServletRegistrationBean servletRegistrationBean(ConsoleServlet ff4jConsoleServlet) {
-        return new ServletRegistrationBean(ff4jConsoleServlet, "/ff4j-console");
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public ConsoleServlet getFF4jServlet(FF4j ff4j) {
-        ConsoleServlet ff4jConsoleServlet = new ConsoleServlet();
-        ff4jConsoleServlet.setFf4j(ff4j);
-        return ff4jConsoleServlet;
-    }
-
-    @Bean
-    public ServletRegistrationBean ff4jDispatcherServletRegistrationBean(FF4jDispatcherServlet ff4jDispatcherServlet) {
-        return new ServletRegistrationBean(ff4jDispatcherServlet, "/ff4j-web-console/*");
+    public ServletRegistrationBean<FF4jDispatcherServlet> ff4jDispatcherServletRegistrationBean(FF4jDispatcherServlet ff4jDispatcherServlet) {
+        return new ServletRegistrationBean<>(ff4jDispatcherServlet, "/ff4j-web-console/*");
     }
 
     @Bean

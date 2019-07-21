@@ -4,5 +4,6 @@
       xsi:schemaLocation="http://www.ff4j.org/schema/ff4j http://ff4j.org/schema/ff4j-1.6.xsd">
     <features>
         <feature uid="AwesomeFeature" enable="false" description="new awesome feature"/>
+        <feature uid="hello.feature" enable="false" description="chose correct hello service"/>
     </features>
 </ff4j>

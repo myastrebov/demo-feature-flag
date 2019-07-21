@@ -3,11 +3,13 @@ package ru.myastrebov.demo.ff4j;
 import org.ff4j.FF4j;
 import org.ff4j.spring.autowire.FF4JFeature;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import ru.myastrebov.demo.feature.v1.DummyResource;
 import ru.myastrebov.demo.feature.v2.FriendlyResource;
+import ru.myastrebov.demo.ff4j.features.IHello;
 
 /**
  * @author m.yastrebov
@@ -24,6 +26,10 @@ public class FeatureController {
     @Autowired
     private FF4j ff4j;
 
+    @Autowired
+    @Qualifier("englishHello")
+    private IHello helloService;
+
     @FF4JFeature("AwesomeFeature")
     private boolean featureEnabled;
 
@@ -35,6 +41,11 @@ public class FeatureController {
     @GetMapping("/feature-flag/dynamic/if-else/{name}")
     public String useFeatureDynamic(@PathVariable String name) {
         return ff4j.check("AwesomeFeature") ? friendlyResource.hello(name) : dummyResource.hello(name);
+    }
+
+    @GetMapping("/feature-flag/aop")
+    public String useAop() {
+        return helloService.hello();
     }
 
     @GetMapping(value = "/", produces = "text/html")
