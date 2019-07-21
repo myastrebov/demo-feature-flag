@@ -1,0 +1,14 @@
+server:
+  port: 8890
+togglz:
+  console:
+    enabled: true
+    secured: false
+    use-management-port: false
+  feature-enums: ru.myastrebov.demo.togglz.FeatureFlags
+logging:
+  level:
+    org.togglz: DEBUG
+management:
+  endpoints:
+    enabled-by-default: true
