@@ -35,11 +35,13 @@ public class FeatureController {
 
     @GetMapping("/feature-flag/static/if-else/{name}")
     public String useFeatureStatic(@PathVariable String name) {
+//        no changes after switch feature flag in runtime
         return featureEnabled ? friendlyResource.hello(name) : dummyResource.hello(name);
     }
 
     @GetMapping("/feature-flag/dynamic/if-else/{name}")
     public String useFeatureDynamic(@PathVariable String name) {
+//        for each request check feature flag value
         return ff4j.check("AwesomeFeature") ? friendlyResource.hello(name) : dummyResource.hello(name);
     }
 
